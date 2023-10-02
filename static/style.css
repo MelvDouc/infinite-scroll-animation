@@ -1,0 +1,106 @@
+/**
+ * Based on a tutorial by Kevin Powell: https://www.youtube.com/watch?v=iLmBy-HKIAw
+ */
+
+:root {
+  --scroller-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: rgb(0, 52, 150);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+
+.scroller {
+  --animation-direction: forwards;
+  --animation-duration: 20s;
+  --inner-gap: .5em;
+  width: min(100%, 500px);
+  padding-block: .5em;
+  display: flex;
+  /* Flex displays allows for a scroller to contain multiple lists. */
+  flex-direction: column;
+  gap: .75em;
+  overflow-x: hidden;
+  -webkit-mask: var(--scroller-mask);
+  /* Blur inline edges of the scroller. */
+  mask: var(--scroller-mask);
+}
+
+/**
+ * Animation is only active if the user hasn't turned on
+ * a setting to disable unnecessary motion on the page.
+ */
+.scroller[data-animated],
+.scroller__inner[data-animated] {
+  --animation-name: scroll;
+}
+
+/**
+ * Allow moving the scroller from left to right.
+ */
+.scroller[data-direction="right"],
+.scroller__inner[data-direction="right"] {
+  --animation-direction: reverse;
+}
+
+/**
+ * Allow customizing animation speed.
+ * Values can be "slow" or "fast".
+ */
+.scroller[data-speed="slow"],
+.scroller__inner[data-speed="slow"] {
+  --animation-duration: 40s;
+}
+
+.scroller[data-speed="fast"],
+.scroller__inner[data-speed="fast"] {
+  --animation-duration: 10s;
+}
+
+.scroller__inner {
+  width: fit-content;
+  /* A set width is needed for the animation to work properly. */
+  list-style: none;
+  display: flex;
+  gap: var(--inner-gap);
+  animation: var(--animation-name) var(--animation-duration) var(--animation-direction) linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  & li {
+    padding: .5em;
+    border-radius: 8px;
+    background: rgb(37, 59, 75);
+  }
+}
+
+@keyframes scroll {
+  to {
+    /**
+     * List items being duplicated,
+     * the list should be translated by 50% + half the flex gap.
+     */
+    translate: calc(-50% - var(--inner-gap) / 2) 0;
+  }
+}

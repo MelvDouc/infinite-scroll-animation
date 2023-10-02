@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./static/style.css">
+  <script src="./static/main.js" defer></script>
+  <title>Infinite Scroll Animation</title>
+</head>
+<body>
+  <h1>Infinite Scroll Animation</h1>
+
+  <div class="scroller">
+    <ul class="scroller__inner">
+      <li>UX/UI</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Java</li>
+      <li>PHP</li>
+      <li>Python</li>
+      <li>Rust</li>
+    </ul>
+  </div>
+
+  <div class="scroller" data-speed="fast" data-direction="right">
+    <ul class="scroller__inner">
+      <li>UX/UI</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Java</li>
+      <li>PHP</li>
+      <li>Python</li>
+      <li>Rust</li>
+    </ul>
+
+    <ul class="scroller__inner" data-speed="slow">
+      <li><img src="https://i.pravatar.cc/300?img=1" alt="Image 1"></li>
+      <li><img src="https://i.pravatar.cc/300?img=2" alt="Image 2"></li>
+      <li><img src="https://i.pravatar.cc/300?img=3" alt="Image 3"></li>
+      <li><img src="https://i.pravatar.cc/300?img=4" alt="Image 4"></li>
+      <li><img src="https://i.pravatar.cc/300?img=5" alt="Image 5"></li>
+    </ul>
+  </div>
+</body>
+</html>
