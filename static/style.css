@@ -1,7 +1,3 @@
-/**
- * Based on a tutorial by Kevin Powell: https://www.youtube.com/watch?v=iLmBy-HKIAw
- */
-
 :root {
   --scroller-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 }
@@ -35,8 +31,8 @@ h1 {
   --inner-gap: .5em;
   width: min(100%, 500px);
   padding-block: .5em;
+  /* A flex display allows for a scroller to contain multiple lists. */
   display: flex;
-  /* Flex displays allows for a scroller to contain multiple lists. */
   flex-direction: column;
   gap: .75em;
   overflow-x: hidden;
